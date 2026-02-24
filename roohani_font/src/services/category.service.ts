@@ -1,0 +1,124 @@
+import { cookies } from "next/headers";
+import { env } from "../env";
+
+const API_URL = env.API_URL;
+
+export const categoryService = {
+
+    getAllCategories: async () => {
+        try {
+            const res = await fetch(`${API_URL}/category`, {
+                cache: 'no-store'
+            });
+            const responseData = await res.json();
+
+            return {
+                success: responseData.success,
+                data: responseData.data || []
+            };
+        } catch (error) {
+            console.error(error);
+            return { success: false, data: [] };
+        }
+    },
+
+    addCategory: async (name: string) => {
+        try {
+            const cookieStore = await cookies();
+
+            const res = await fetch(`${API_URL}/category`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Cookie: cookieStore.toString(),
+                },
+                body: JSON.stringify({ name }),
+            });
+
+            const responseData = await res.json();
+
+            if (!res.ok) {
+                return {
+                    success: false,
+                    data: null,
+                    message: responseData?.message || "Failed to create category",
+                };
+            }
+
+            return {
+                success: true,
+                data: responseData.data || responseData,
+                message: "Category created successfully"
+            };
+        } catch (error) {
+            console.error("🔥 Service Error (Add):", error);
+            return { success: false, data: null, message: "Server connection failed" };
+        }
+    },
+
+    /**
+     * ক্যাটাগরি ডিলিট করা
+     */
+    deleteCategory: async (id: string) => {
+        try {
+            const cookieStore = await cookies();
+
+            const res = await fetch(`${API_URL}/category/${id}`, {
+                method: "DELETE",
+                headers: {
+                    Cookie: cookieStore.toString(),
+                },
+            });
+
+            let responseData = null;
+            if (res.status !== 204) {
+                responseData = await res.json().catch(() => null);
+            }
+
+            if (!res.ok) {
+                return {
+                    success: false,
+                    message: responseData?.message || "Failed to delete category",
+                };
+            }
+
+            return { success: true, message: "Category deleted successfully" };
+        } catch (error) {
+            console.error("🔥 Service Error (Delete):", error);
+            return { success: false, message: "Something went wrong while deleting" };
+        }
+    },
+
+    updateCategory: async (id: string, name: string) => {
+        try {
+            const cookieStore = await cookies();
+
+            const res = await fetch(`${API_URL}/category/${id}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+                    Cookie: cookieStore.toString(),
+                },
+                body: JSON.stringify({ name }),
+            });
+
+            const responseData = await res.json();
+
+            if (!res.ok) {
+                return {
+                    success: false,
+                    message: responseData?.message || "Failed to update category",
+                };
+            }
+
+            return {
+                success: true,
+                data: responseData.data || responseData,
+                message: "Category updated successfully"
+            };
+        } catch (error) {
+            console.error("🔥 Service Error (Update):", error);
+            return { success: false, message: "Server communication error" };
+        }
+    },
+};
