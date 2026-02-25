@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tsx watch src/server.ts",
     "seed": "npx tsx src/scripts/seedAdmin.ts",
-    "build": "npx prisma generate && tsc",
-    "start": "node dist/server.js",
-    "postinstall": "npx prisma generate",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "prisma generate && tsc",
+    "postinstall": "prisma generate",
+    "start": "node dist/server.js"
   },
   "keywords": [],
   "author": "",
@@ -26,8 +26,6 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
-    "@types/node": "^22.10.0",
-    "@types/express": "^5.0.6",
     "@prisma/adapter-pg": "^7.4.1",
     "@prisma/client": "^7.4.1",
     "bcryptjs": "^3.0.3",
