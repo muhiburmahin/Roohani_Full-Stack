@@ -1,0 +1,1 @@
+{"version":3,"file":"appError.d.ts","sourceRoot":"","sources":["../../../src/middleware/appError.ts"],"names":[],"mappings":"AAAA,qBAAa,QAAS,SAAQ,KAAK;IACxB,UAAU,EAAE,MAAM,CAAC;gBACd,OAAO,EAAE,MAAM,EAAE,UAAU,EAAE,MAAM;CAKlD"}
