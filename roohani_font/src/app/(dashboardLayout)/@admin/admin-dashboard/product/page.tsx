@@ -1,6 +1,8 @@
 import { getAllProductsAction } from "@/src/actions/product.action";
 import ProductManagement from "@/src/components/modules/admin/ProductManagement";
 
+export const dynamic = 'force-dynamic';
+
 export default async function AdminProductPage() {
     const response = await getAllProductsAction({ limit: "50" });
     const products = response?.data?.data || [];

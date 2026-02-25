@@ -2,13 +2,19 @@
 import { userService } from "../services/user.service";
 
 export const getAdminDashboardStatsAction = async () => {
-    const result = await userService.getAdminStats();
+    try {
+        const result = await userService.getAdminStats();
 
-    if (result?.success) {
-        return result.data;
+        if (result?.success) {
+            return result.data;
+        }
+
+        console.error("Admin stats error:", result?.message);
+        return null;
+    } catch (error) {
+        console.error("Admin Dashboard Stats Error:", error);
+        return null;
     }
-
-    return null;
 };
 
 
