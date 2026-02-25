@@ -5,15 +5,18 @@ export const getAdminDashboardStatsAction = async () => {
     try {
         const result = await userService.getAdminStats();
 
+        console.log("Admin Stats Result:", result);
+
         if (result?.success) {
+            console.log("Admin Stats Data:", result.data);
             return result.data;
         }
 
-        console.error("Admin stats error:", result?.message);
-        return null;
+        console.error("Admin stats error:", result?.message || "Unknown error");
+        throw new Error(result?.message || "Failed to fetch admin stats");
     } catch (error) {
         console.error("Admin Dashboard Stats Error:", error);
-        return null;
+        throw error;
     }
 };
 

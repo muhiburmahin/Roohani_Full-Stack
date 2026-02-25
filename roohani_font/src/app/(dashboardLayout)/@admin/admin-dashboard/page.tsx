@@ -8,6 +8,22 @@ export default async function AdminDashboardPage() {
         // ডাটা ফেচ করা হচ্ছে
         const stats = await getAdminDashboardStatsAction();
 
+        console.log("Dashboard Stats:", stats);
+
+        if (!stats) {
+            return (
+                <div className="flex items-center justify-center min-h-screen p-4">
+                    <div className="bg-amber-50 border-2 border-amber-200 rounded-lg p-8 max-w-md text-center">
+                        <h2 className="text-2xl font-bold text-amber-900 mb-2">No Data Available</h2>
+                        <p className="text-amber-700 mb-4">Unable to fetch admin statistics. Please ensure you have admin access.</p>
+                        <button onClick={() => window.location.reload()} className="px-4 py-2 bg-amber-600 text-white rounded hover:bg-amber-700">
+                            Refresh
+                        </button>
+                    </div>
+                </div>
+            );
+        }
+
         return (
             <div className="space-y-8 p-2">
                 <div className="flex flex-col gap-1 px-4">
