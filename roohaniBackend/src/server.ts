@@ -8,7 +8,6 @@ async function main() {
         await prisma.$connect();
         console.log("Prisma connected successfully");
 
-        // লোকাল ডেভেলপমেন্টের জন্য listen থাকবে
         if (process.env.NODE_ENV !== "production") {
             app.listen(port, () => {
                 console.log(`Server is running at http://localhost:${port}`);
@@ -22,5 +21,3 @@ async function main() {
 
 main();
 
-// Vercel-এর জন্য এটি খুব জরুরি
-export default app;

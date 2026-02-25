@@ -10,7 +10,7 @@ async function seedAdmin() {
     //await prisma.user.deleteMany({ where: { email: shadowEmail } });
 
     // ২. পাসওয়ার্ড সঠিক ফরম্যাটে হ্যাশ করুন
-    const hashedPassword = await hashPassword("adminroohanibd12");
+    const hashedPassword = await hashPassword("admin12345");
 
     // ৩. সরাসরি Prisma দিয়ে User ও Account তৈরি করুন
     await prisma.user.create({
