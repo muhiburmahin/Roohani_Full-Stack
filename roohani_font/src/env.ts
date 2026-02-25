@@ -7,6 +7,7 @@ export const env = createEnv({
         FRONTEND_URL: z.string().min(1),
         API_URL: z.string().min(1),
         AUTH_URL: z.string().min(1),
+        BETTER_AUTH_URL: z.string().min(1),
     },
     client: {
         NEXT_PUBLIC_TEST: z.string().min(1),
@@ -18,6 +19,7 @@ export const env = createEnv({
         FRONTEND_URL: process.env.FRONTEND_URL,
         API_URL: process.env.API_URL,
         AUTH_URL: process.env.AUTH_URL,
+        BETTER_AUTH_URL: process.env.BETTER_AUTH_URL,
 
         NEXT_PUBLIC_TEST: process.env.NEXT_PUBLIC_TEST,
 
