@@ -6,11 +6,9 @@ async function seedAdmin() {
     const adminPhone = "01712000000";
     const shadowEmail = `${adminPhone}@roohani.local`;
 
-    // ১. আগের ডাটা ডিলিট করুন (যাতে ফ্রেশ ইনসার্ট হয়)
     //await prisma.user.deleteMany({ where: { email: shadowEmail } });
 
-    // ২. পাসওয়ার্ড সঠিক ফরম্যাটে হ্যাশ করুন
-    const hashedPassword = await hashPassword("admin12345");
+    const hashedPassword = await hashPassword("11111111");
 
     // ৩. সরাসরি Prisma দিয়ে User ও Account তৈরি করুন
     await prisma.user.create({
