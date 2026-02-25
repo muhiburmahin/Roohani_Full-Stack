@@ -7,23 +7,23 @@ export const env = createEnv({
         FRONTEND_URL: z.string().min(1),
         API_URL: z.string().min(1),
         AUTH_URL: z.string().min(1),
-        BETTER_AUTH_URL: z.string().min(1),
     },
     client: {
         NEXT_PUBLIC_TEST: z.string().min(1),
         NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: z.string().min(1),
         NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET: z.string().min(1),
+        NEXT_PUBLIC_BETTER_AUTH_URL: z.string().min(1),
     },
     runtimeEnv: {
         BACKEND_URL: process.env.BACKEND_URL,
         FRONTEND_URL: process.env.FRONTEND_URL,
         API_URL: process.env.API_URL,
         AUTH_URL: process.env.AUTH_URL,
-        BETTER_AUTH_URL: process.env.BETTER_AUTH_URL,
 
         NEXT_PUBLIC_TEST: process.env.NEXT_PUBLIC_TEST,
 
         NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
         NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET: process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET,
+        NEXT_PUBLIC_BETTER_AUTH_URL: process.env.NEXT_PUBLIC_BETTER_AUTH_URL,
     },
 });
