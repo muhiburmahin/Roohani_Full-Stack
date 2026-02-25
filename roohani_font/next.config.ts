@@ -24,11 +24,10 @@ const nextConfig = {
     },
   },
   async rewrites() {
-    // ব্যাকএন্ড ইউআরএল চেক করা হচ্ছে
-    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || process.env.BACKEND_URL;
 
     if (!backendUrl) {
-      console.warn("⚠️ Warning: NEXT_PUBLIC_BACKEND_URL is not defined in your .env file!");
+      console.warn("⚠️ Warning: NEXT_PUBLIC_BACKEND_URL or BACKEND_URL is not defined!");
       return [];
     }
 

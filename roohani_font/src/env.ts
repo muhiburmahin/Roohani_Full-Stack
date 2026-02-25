@@ -9,6 +9,7 @@ export const env = createEnv({
         AUTH_URL: z.string().min(1),
     },
     client: {
+        NEXT_PUBLIC_BACKEND_URL: z.string().min(1),
         NEXT_PUBLIC_TEST: z.string().min(1),
         NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: z.string().min(1),
         NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET: z.string().min(1),
@@ -20,8 +21,8 @@ export const env = createEnv({
         API_URL: process.env.API_URL,
         AUTH_URL: process.env.AUTH_URL,
 
+        NEXT_PUBLIC_BACKEND_URL: process.env.NEXT_PUBLIC_BACKEND_URL,
         NEXT_PUBLIC_TEST: process.env.NEXT_PUBLIC_TEST,
-
         NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
         NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET: process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET,
         NEXT_PUBLIC_BETTER_AUTH_URL: process.env.NEXT_PUBLIC_BETTER_AUTH_URL,
